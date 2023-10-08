@@ -1,13 +1,14 @@
 package it.gend.lctes.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
+import java.util.Set;
+
 @Entity
 @Table(name = "examFamily")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @Builder
 @AllArgsConstructor
@@ -16,7 +17,7 @@ public class ExamFamily {
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
     String name;
-    @OneToOne(mappedBy = "examFamily")
-    Exam exam;
+    @OneToMany( mappedBy = "examFamily")
+    Set<Exam> exam;
 
 }

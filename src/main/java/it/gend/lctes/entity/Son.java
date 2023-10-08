@@ -1,10 +1,8 @@
 package it.gend.lctes.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.hibernate.annotations.Parent;
 
 import java.sql.Date;
 import java.util.Set;
@@ -14,7 +12,8 @@ import java.util.Set;
 @NoArgsConstructor
 @Builder
 @AllArgsConstructor
-@Data
+@Getter
+@Setter
 public class Son {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,7 +22,6 @@ public class Son {
     String surname;
     Date dateOfBirth;
     String stateOfHealth;
-    @OneToMany(mappedBy="son")
-    Set<SonGeneratedBy> parents;
-
+    @ManyToOne(fetch = FetchType.LAZY)
+    Patient patient;
 }

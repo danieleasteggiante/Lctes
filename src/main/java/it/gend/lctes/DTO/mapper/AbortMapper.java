@@ -10,5 +10,5 @@ import org.springframework.stereotype.Component;
 @Component
 @Mapper(componentModel = "spring")
 public interface AbortMapper {
-    AbortDTO abortToAbortDTO(Abort car);
+    AbortDTO abortToAbortDTO(Abort abort);
 }

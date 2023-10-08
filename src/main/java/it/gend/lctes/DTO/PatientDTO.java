@@ -1,12 +1,7 @@
 package it.gend.lctes.DTO;
 
-import it.gend.lctes.entity.AbortGeneratedBy;
-import it.gend.lctes.entity.Exam;
-import it.gend.lctes.entity.Relation;
-import it.gend.lctes.entity.SonGeneratedBy;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import it.gend.lctes.entity.enums.Sex;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -28,15 +23,16 @@ public class PatientDTO {
     String contact;
     String originState;
     String cf;
-    Relation relation;
+    String partnerId;
+    String partnerName;
+    String partnerSurname;
     String currentPartnerName;
     String getCurrentPartnerSurname;
     Boolean pregnant;
-    Set<SonGeneratedBy> sonGeneratedBySet;
-    Set<AbortGeneratedBy> abortGeneratedBySet;
+    @JsonProperty("listaEsami")
+    Set<ExamDTO> examSet;
     String requestingDepartment;
     String indicationInvestigation;
     String personalHistory;
     String familyHistory;
-    Set<Exam> examSet;
 }

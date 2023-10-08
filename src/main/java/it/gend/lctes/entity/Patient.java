@@ -2,10 +2,7 @@ package it.gend.lctes.entity;
 
 import it.gend.lctes.entity.enums.Sex;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.sql.Date;
 import java.util.Set;
@@ -14,7 +11,8 @@ import java.util.Set;
 @NoArgsConstructor
 @Builder
 @AllArgsConstructor
-@Data
+@Getter
+@Setter
 public class Patient {
     @Id
     Long id;
@@ -26,20 +24,19 @@ public class Patient {
     String contact;
     String originState;
     String cf;
-    @ManyToOne
-    @JoinColumn(name="relation_id")
-    Relation relation;
+    @OneToOne
+    Patient partner;
     String currentPartnerName;
-    String getCurrentPartnerSurname;
+    String currentPartnerSurname;
     Boolean pregnant;
-    @OneToMany(mappedBy="patient")
-    Set<SonGeneratedBy> sonGeneratedBySet;
-    @OneToMany(mappedBy="patient")
-    Set<AbortGeneratedBy> abortGeneratedBySet;
     String requestingDepartment;
     String indicationInvestigation;
     String personalHistory;
     String familyHistory;
-    @OneToMany(mappedBy="patient")
+    @OneToMany(mappedBy="patient", cascade = CascadeType.ALL)
     Set<Exam> examSet;
+    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
+    Set<Abort> abortSet;
+    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
+    Set<Son> sonSet;
 }

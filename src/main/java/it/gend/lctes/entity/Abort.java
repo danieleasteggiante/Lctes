@@ -2,10 +2,7 @@ package it.gend.lctes.entity;
 
 import it.gend.lctes.entity.enums.TypeOfAbort;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.Set;
 
@@ -14,13 +11,15 @@ import java.util.Set;
 @NoArgsConstructor
 @Builder
 @AllArgsConstructor
-@Data
+@Getter
+@Setter
 public class Abort {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
     TypeOfAbort typeOfAbort;
     Integer gestationalEpoch;
-    @OneToMany(mappedBy = "abort")
-    Set<AbortGeneratedBy> generatedBySet;
+    @ManyToOne(fetch = FetchType.LAZY)
+    Patient patient;
+
 }

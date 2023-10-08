@@ -35,7 +35,7 @@ public class AbortController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<AbortDTO> createCanvass() {
+    public ResponseEntity<AbortDTO> getAll() {
         abortRepository.save(Abort.builder().typeOfAbort(TypeOfAbort.IVG).build());
         log.info("REST request to get All {}", "aborts");
         AbortDTO abortDTO = abortMapper.abortToAbortDTO(abortRepository.findAll().get(0));
