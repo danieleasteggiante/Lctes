@@ -35,8 +35,16 @@ public class Patient {
     String familyHistory;
     @OneToMany(mappedBy="patient", cascade = CascadeType.ALL)
     Set<Exam> examSet;
-    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
+    @ManyToMany
+    @JoinTable(
+            name = "abortOf",
+            joinColumns = @JoinColumn(name = "parent"),
+            inverseJoinColumns = @JoinColumn(name = "abort"))
     Set<Abort> abortSet;
-    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
+    @ManyToMany
+    @JoinTable(
+            name = "sonOf",
+            joinColumns = @JoinColumn(name = "parent"),
+            inverseJoinColumns = @JoinColumn(name = "son"))
     Set<Son> sonSet;
 }

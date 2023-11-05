@@ -26,3 +26,6 @@ spring:
             name: admin
             password: admin
             roles: ADMIN, USER, MANAGER
+springdoc:
+    swagger-ui:
+        path: '/swagger'

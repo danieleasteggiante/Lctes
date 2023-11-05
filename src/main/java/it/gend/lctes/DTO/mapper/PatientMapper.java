@@ -11,8 +11,6 @@ import org.springframework.stereotype.Component;
 @Component
 @Mapper(componentModel = "spring")
 public interface PatientMapper {
-    @Mapping(target = "partnerName", source = "patient.partner.name")
-    @Mapping(target = "partnerId", source = "patient.partner.id")
     PatientDTO patientToPatientDTO(Patient patient);
-
+    Patient patientDTOToPatient(PatientDTO patientDTO);
 }

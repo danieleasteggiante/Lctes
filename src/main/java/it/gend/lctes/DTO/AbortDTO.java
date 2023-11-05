@@ -11,7 +11,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 public class AbortDTO {
-    Long id;
     TypeOfAbort typeOfAbort;
     Integer gestationalEpoch;
 }

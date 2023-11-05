@@ -22,6 +22,6 @@ public class Son {
     String surname;
     Date dateOfBirth;
     String stateOfHealth;
-    @ManyToOne(fetch = FetchType.LAZY)
-    Patient patient;
+    @ManyToMany(mappedBy = "sonSet")
+    Set<Patient> parent;
 }

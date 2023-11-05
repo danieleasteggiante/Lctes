@@ -19,7 +19,6 @@ public class Abort {
     Long id;
     TypeOfAbort typeOfAbort;
     Integer gestationalEpoch;
-    @ManyToOne(fetch = FetchType.LAZY)
-    Patient patient;
-
+    @ManyToMany(mappedBy = "abortSet")
+    Set<Patient> parent;
 }

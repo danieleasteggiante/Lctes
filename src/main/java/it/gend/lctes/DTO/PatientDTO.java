@@ -23,14 +23,16 @@ public class PatientDTO {
     String contact;
     String originState;
     String cf;
-    String partnerId;
-    String partnerName;
-    String partnerSurname;
+    PatientDTO partner;
     String currentPartnerName;
     String getCurrentPartnerSurname;
     Boolean pregnant;
     @JsonProperty("listaEsami")
     Set<ExamDTO> examSet;
+    @JsonProperty("figli")
+    Set<SonDTO> sonDTOSet;
+    @JsonProperty("aborti")
+    Set<AbortDTO> abortDTOSet;
     String requestingDepartment;
     String indicationInvestigation;
     String personalHistory;

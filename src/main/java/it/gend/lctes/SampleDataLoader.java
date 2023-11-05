@@ -96,7 +96,6 @@ public class SampleDataLoader implements CommandLineRunner {
                                         .name(faker.medical().diseaseName())
                                         .surname(faker.name().lastName())
                                         .stateOfHealth(faker.medical().symptoms())
-                                        .patient(patient)
                                         .build();
                                 return son;
                             }).collect(Collectors.toSet());
@@ -107,7 +106,6 @@ public class SampleDataLoader implements CommandLineRunner {
                     Set<Abort> abortSet = IntStream.rangeClosed(0,(int)(Math.random() * 3))
                             .mapToObj(j->{
                                 Abort abort = Abort.builder()
-                                        .patient(patient)
                                         .gestationalEpoch(faker.number().numberBetween(4,40))
                                         .typeOfAbort(TypeOfAbort.values()[(int)(Math.random() * TypeOfAbort.values().length-1)])
                                         .build();
